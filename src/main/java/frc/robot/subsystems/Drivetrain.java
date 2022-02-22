@@ -60,6 +60,9 @@ public class Drivetrain extends SubsystemBase {
   private final CANSparkMax FR = new CANSparkMax(CAN.driveFR, MotorType.kBrushless);
   private final CANSparkMax BL = new CANSparkMax(CAN.driveBL, MotorType.kBrushless);
   private final CANSparkMax BR = new CANSparkMax(CAN.driveBR, MotorType.kBrushless);
+
+  private final DifferentialDrive robotDrive = new DifferentialDrive(FL, FR);
+
   public Drivetrain() {
     
     FL.restoreFactoryDefaults();
@@ -77,4 +80,10 @@ public class Drivetrain extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+  public void arcadeDrive(double speed, double rotation) {
+    // SmartDashboard.putNumber("rotation prop", rotation);
+    robotDrive.arcadeDrive(speed, rotation);
+  }
+
 }

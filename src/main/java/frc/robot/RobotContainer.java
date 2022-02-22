@@ -28,11 +28,18 @@ public class RobotContainer {
   private final Drivetrain drivetrain = new Drivetrain();
   private final Intake digestiveSystem = new Intake();
 
-private final CommandXboxController controller = new CommandXboxController(0);
+  private final CommandXboxController controller = new CommandXboxController(0);
+
+  private final Command driveCommand =
+      new RunCommand(
+          () -> drivetrain.arcadeDrive(controller.getLeftY(), -controller.getRightX()),
+          drivetrain);
 
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+
+    drivetrain.setDefaultCommand(driveCommand);
   }
 
   /**
