@@ -6,9 +6,9 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class DigestiveSystem extends SubsystemBase {
-  /** Creates a new DigestiveSystem. */
-  public DigestiveSystem() {}
+public class Shooter extends SubsystemBase {
+  /** Creates a new Shooter. */
+  public Shooter() {}
 
   @Override
   public void periodic() {
