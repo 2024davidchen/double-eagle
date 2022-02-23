@@ -15,10 +15,10 @@ package frc.robot;
 public final class Constants {
 
     public static final class CAN {
-        public static final int driveFL = 0;
-        public static final int driveFR = 0;
-        public static final int driveBR = 0;
-        public static final int driveBL = 0;
+        public static final int driveFL = 62;
+        public static final int driveFR = 2;
+        public static final int driveBR = 11;
+        public static final int driveBL = 8;
     }
 
     public static class XBOX {
