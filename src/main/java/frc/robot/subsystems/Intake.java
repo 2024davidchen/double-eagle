@@ -4,11 +4,22 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import frc.robot.Constants.CAN;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
+
+  private final CANSparkMax intakeMotor = new CANSparkMax(CAN.intake, MotorType.kBrushless);
+
   /** Creates a new DigestiveSystem. */
-  public Intake() {}
+  public Intake() {
+
+    intakeMotor.restoreFactoryDefaults();
+
+  }
 
   @Override
   public void periodic() {

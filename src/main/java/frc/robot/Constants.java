@@ -19,6 +19,10 @@ public final class Constants {
         public static final int driveFR = 2;
         public static final int driveBR = 11;
         public static final int driveBL = 8;
+
+        public static final int intake = 0;
+        public static final int shooterL = 1;
+        public static final int shooterR = 2;
     }
 
     public static class XBOX {
