@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -26,7 +27,8 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   private final Climber climber = new Climber();
   private final Drivetrain drivetrain = new Drivetrain();
-  private final Intake digestiveSystem = new Intake();
+  private final Intake intake = new Intake();
+  private final Shooter shooter = new Shooter();
 
   private final CommandXboxController controller = new CommandXboxController(0);
 
@@ -48,7 +50,17 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    // controller.leftBumper().whileHeld(() -> intake.setIntakeVoltage(0.5)).whenReleased(() -> intake.setIntakeVoltage(0));
+    if (controller.getRawButtonPressed(Constants.XBOX.BUMPER_LEFT)){
+      intake.setIntakeVoltage(0.5);
+    }
+    else{
+      intake.setIntakeVoltage(0);
+    }
+    controller.rightBumper().whenPressed(() -> intake.toggleSolenoid());
+    shooter.setShooterVoltage(controller.getLeftTriggerAxis());
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

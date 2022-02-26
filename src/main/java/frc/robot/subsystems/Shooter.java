@@ -11,17 +11,23 @@ import frc.robot.Constants.CAN;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
-  private final CANSparkMax shooterR = new CANSparkMax(CAN.shooterR, MotorType.kBrushless);
-  private final CANSparkMax shooterL = new CANSparkMax(CAN.shooterL, MotorType.kBrushless);
+  private final CANSparkMax shooterF = new CANSparkMax(CAN.shooterF, MotorType.kBrushless);
+  private final CANSparkMax shooterB = new CANSparkMax(CAN.shooterB, MotorType.kBrushless);
 
   /** Creates a new Shooter. */
   public Shooter() {
-    shooterL.restoreFactoryDefaults();
-    shooterR.restoreFactoryDefaults();
+    shooterF.restoreFactoryDefaults();
+    shooterB.restoreFactoryDefaults();
+    shooterB.follow(shooterF);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+  public void setShooterVoltage(double voltage){
+    shooterF.set(voltage);
+  }
+  
 }

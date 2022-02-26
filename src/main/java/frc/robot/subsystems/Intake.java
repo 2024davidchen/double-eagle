@@ -8,15 +8,18 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import frc.robot.Constants.CAN;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
 
   private final CANSparkMax intakeMotor = new CANSparkMax(CAN.intake, MotorType.kBrushless);
-
-  /** Creates a new DigestiveSystem. */
+  private final DoubleSolenoid solenoid = new DoubleSolenoid(PneumaticsModuleType.REVPH, CAN.solenoidF, CAN.solenoidR);
+  /** Creates a new Intake. */
   public Intake() {
-
+    solenoid.set(Value.kReverse);
     intakeMotor.restoreFactoryDefaults();
 
   }
@@ -24,5 +27,13 @@ public class Intake extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+  }
+  
+  public void setIntakeVoltage(double voltage){
+    intakeMotor.set(voltage);
+  }
+  
+  public void toggleSolenoid(){
+    solenoid.toggle();
   }
 }
