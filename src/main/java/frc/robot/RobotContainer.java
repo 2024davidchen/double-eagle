@@ -54,16 +54,19 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    // controller.leftBumper().whileHeld(() -> intake.setIntakeVoltage(0.5)).whenReleased(() -> intake.setIntakeVoltage(0));
-    if (controller.getRawButtonPressed(Constants.XBOX.BUMPER_LEFT)){
-      intake.setBooperVoltage(0.5);
-    }
-    else{
-      intake.setBooperVoltage(0);
-    }
+    controller.leftBumper().whileHeld(() -> intake.setBooperVoltage(0.5)).whenReleased(() -> intake.setBooperVoltage(0));
+    controller.a().whileHeld(() -> intake.setIntakeVoltage(0.5)).whenReleased(() -> intake.setIntakeVoltage(0));
+    // if (controller.getRawButtonPressed(Constants.XBOX.BUMPER_LEFT)){
+    //   intake.setBooperVoltage(0.5);
+    // }
+    // else{
+    //   intake.setBooperVoltage(0);
+    // }
     controller.rightBumper().whenPressed(() -> intake.toggleSolenoid());
-    intake.setIntakeVoltage(controller.getRightTriggerAxis());
-    shooter.setShooterVoltage(controller.getLeftTriggerAxis());
+    // controller.a().whenPressed(() -> intake.setIntakeVoltage());
+    controller.b().whenPressed(() -> shooter.setShooterVoltage(0.8)).whenReleased(() -> shooter.setShooterVoltage(0));
+    // intake.setIntakeVoltage(controller.getRightTriggerAxis());
+    // shooter.setShooterVoltage(controller.getLeftTriggerAxis());
   }
 
   /**
