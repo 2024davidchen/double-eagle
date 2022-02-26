@@ -16,12 +16,16 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Intake extends SubsystemBase {
 
   private final CANSparkMax intakeMotor = new CANSparkMax(CAN.intake, MotorType.kBrushless);
+  private final CANSparkMax booperMotor = new CANSparkMax(CAN.booper, MotorType.kBrushless);
+
   private final DoubleSolenoid solenoid = new DoubleSolenoid(PneumaticsModuleType.REVPH, CAN.solenoidF, CAN.solenoidR);
+
   /** Creates a new Intake. */
   public Intake() {
     solenoid.set(Value.kReverse);
     intakeMotor.restoreFactoryDefaults();
-
+    booperMotor.restoreFactoryDefaults();
+    booperMotor.setInverted(true);
   }
 
   @Override
@@ -32,8 +36,19 @@ public class Intake extends SubsystemBase {
   public void setIntakeVoltage(double voltage){
     intakeMotor.set(voltage);
   }
+
+  public void setBooperVoltage(double voltage){
+    booperMotor.set(voltage);
+  }
   
   public void toggleSolenoid(){
     solenoid.toggle();
+  }
+
+  public void extend(){
+    solenoid.set(Value.kForward);
+  }
+  public void retract(){
+    solenoid.set(Value.kReverse);
   }
 }

@@ -11,6 +11,7 @@ import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 
 
@@ -37,6 +38,8 @@ public class RobotContainer {
           () -> drivetrain.arcadeDrive(controller.getLeftY(), -controller.getRightX()),
           drivetrain);
 
+  // private final InstantCommand eat = new InstantCommand(() -> intake.extend());
+
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
@@ -53,12 +56,13 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // controller.leftBumper().whileHeld(() -> intake.setIntakeVoltage(0.5)).whenReleased(() -> intake.setIntakeVoltage(0));
     if (controller.getRawButtonPressed(Constants.XBOX.BUMPER_LEFT)){
-      intake.setIntakeVoltage(0.5);
+      intake.setBooperVoltage(0.5);
     }
     else{
-      intake.setIntakeVoltage(0);
+      intake.setBooperVoltage(0);
     }
     controller.rightBumper().whenPressed(() -> intake.toggleSolenoid());
+    intake.setIntakeVoltage(controller.getRightTriggerAxis());
     shooter.setShooterVoltage(controller.getLeftTriggerAxis());
   }
 
