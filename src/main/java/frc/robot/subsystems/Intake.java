@@ -25,7 +25,6 @@ public class Intake extends SubsystemBase {
   public Intake() {
     solenoid.set(Value.kReverse);
     intakeMotor.restoreFactoryDefaults();
-    booperMotor.restoreFactoryDefaults();
     booperMotor.setInverted(true);
   }
 
