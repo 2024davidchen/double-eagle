@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 
 
+
+
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -54,17 +56,20 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    controller.leftBumper().whileHeld(() -> intake.setBooperVoltage(0.5)).whenReleased(() -> intake.setBooperVoltage(0));
-    controller.a().whileHeld(() -> intake.setIntakeVoltage(0.5)).whenReleased(() -> intake.setIntakeVoltage(0));
+    // controller.leftBumper().whileHeld(() -> intake.setBooperVoltage(0.5)).whenReleased(() -> intake.setBooperVoltage(0));
+    // controller.a().whileHeld(() -> intake.setIntakeVoltage(0.5)).whenReleased(() -> intake.setIntakeVoltage(0));
     // if (controller.getRawButtonPressed(Constants.XBOX.BUMPER_LEFT)){
     //   intake.setBooperVoltage(0.5);
     // }
     // else{
     //   intake.setBooperVoltage(0);
     // }
+
     controller.rightBumper().whenPressed(() -> intake.toggleSolenoid());
+    controller.leftBumper().whenPressed(() -> shooter.boop());
+
     // controller.a().whenPressed(() -> intake.setIntakeVoltage());
-    controller.b().whenPressed(() -> shooter.setShooterVoltage(0.8)).whenReleased(() -> shooter.setShooterVoltage(0));
+    // controller.b().whenPressed(() -> shooter.setShooterVoltage(0.8)).whenReleased(() -> shooter.setShooterVoltage(0));
     // intake.setIntakeVoltage(controller.getRightTriggerAxis());
     // shooter.setShooterVoltage(controller.getLeftTriggerAxis());
   }

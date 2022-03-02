@@ -72,8 +72,9 @@ public class Drivetrain extends SubsystemBase {
 
     BL.follow(FL);
     BR.follow(FR);
-
+    
     FL.setInverted(true);
+
   }
 
   @Override

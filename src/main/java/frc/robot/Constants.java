@@ -21,9 +21,11 @@ public final class Constants {
         public static final int driveBL = 8;
 
         public static final int intake = 25;
-        public static final int booper = 1;
+        public static final int booper = 7;
         public static final int shooterF = 36;
         public static final int shooterB = 5;
+
+        public static final int pneumaticmod = 3;
         public static final int solenoidF = 1;
         public static final int solenoidR = 7;
     }

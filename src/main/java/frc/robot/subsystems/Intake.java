@@ -13,24 +13,28 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.CommandXboxController;
 
 public class Intake extends SubsystemBase {
 
-  private final CANSparkMax intakeMotor = new CANSparkMax(CAN.intake, MotorType.kBrushless);
-  private final Talon booperMotor = new Talon(25);
+  private final Talon intakeMotor = new Talon(CAN.intake);
+  // private final Talon booperMotor = new Talon(25);
+  private final CommandXboxController controller = new CommandXboxController(0);
 
-  private final DoubleSolenoid solenoid = new DoubleSolenoid(PneumaticsModuleType.REVPH, CAN.solenoidF, CAN.solenoidR);
+  private final DoubleSolenoid solenoid = new DoubleSolenoid(CAN.pneumaticmod, PneumaticsModuleType.REVPH, CAN.solenoidF, CAN.solenoidR);
 
   /** Creates a new Intake. */
   public Intake() {
     solenoid.set(Value.kReverse);
-    intakeMotor.restoreFactoryDefaults();
-    booperMotor.setInverted(true);
+    // intakeMotor.restoreFactoryDefaults();
+    intakeMotor.setInverted(true);
+    
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    setIntakeVoltage(controller.getRightTriggerAxis());
   }
   
   public void setIntakeVoltage(double voltage){
@@ -38,7 +42,7 @@ public class Intake extends SubsystemBase {
   }
 
   public void setBooperVoltage(double voltage){
-    booperMotor.set(voltage);
+    // booperMotor.set(voltage);
   }
   
   public void toggleSolenoid(){
