@@ -65,7 +65,7 @@ public class RobotContainer {
     //   intake.setBooperVoltage(0);
     // }
 
-    controller.rightBumper().whenPressed(() -> intake.toggleSolenoid());
+    controller.rightBumper().whenPressed(() -> intake.extend()).whenReleased(() -> intake.retract());
     controller.leftBumper().whenPressed(() -> shooter.boop());
 
     // controller.a().whenPressed(() -> intake.setIntakeVoltage());
