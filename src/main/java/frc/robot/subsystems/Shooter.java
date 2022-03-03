@@ -39,9 +39,9 @@ public class Shooter extends SubsystemBase {
     booperEncoder.setPosition(1);
     // booping = true;
     booperMotor.set(0.2);
-    // while (booperMotor.){
-
-    // }
+    while (booperEncoder.getVelocity() > 0){
+;
+    }
   }
 
   public void setShooterVoltage(double percent){

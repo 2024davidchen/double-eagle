@@ -11,13 +11,12 @@ import frc.robot.Constants.CAN;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.CommandXboxController;
 
 public class Intake extends SubsystemBase {
 
-  private final Talon intakeMotor = new Talon(CAN.intake);
+  private final CANSparkMax intakeMotor = new CANSparkMax(CAN.intake, MotorType.kBrushless);
   private final CommandXboxController controller = new CommandXboxController(0);
 
   private final DoubleSolenoid solenoid = new DoubleSolenoid(CAN.pneumaticmod, PneumaticsModuleType.REVPH, CAN.solenoidF, CAN.solenoidR);
@@ -25,7 +24,7 @@ public class Intake extends SubsystemBase {
   /** Creates a new Intake. */
   public Intake() {
     solenoid.set(Value.kReverse);
-    // intakeMotor.restoreFactoryDefaults();
+    intakeMotor.restoreFactoryDefaults();
     intakeMotor.setInverted(true);
     
   }
