@@ -18,7 +18,6 @@ import frc.robot.CommandXboxController;
 public class Intake extends SubsystemBase {
 
   private final Talon intakeMotor = new Talon(CAN.intake);
-  // private final Talon booperMotor = new Talon(25);
   private final CommandXboxController controller = new CommandXboxController(0);
 
   private final DoubleSolenoid solenoid = new DoubleSolenoid(CAN.pneumaticmod, PneumaticsModuleType.REVPH, CAN.solenoidF, CAN.solenoidR);
@@ -41,9 +40,6 @@ public class Intake extends SubsystemBase {
     intakeMotor.set(voltage);
   }
 
-  public void setBooperVoltage(double voltage){
-    // booperMotor.set(voltage);
-  }
   
   public void toggleSolenoid(){
     solenoid.toggle();
