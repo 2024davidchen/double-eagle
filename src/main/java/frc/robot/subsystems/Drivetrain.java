@@ -62,6 +62,7 @@ public class Drivetrain extends SubsystemBase {
   private final CANSparkMax BR = new CANSparkMax(CAN.driveBR, MotorType.kBrushless);
 
   private final DifferentialDrive robotDrive = new DifferentialDrive(FL, FR);
+  private double speedMultiplier = 0.6;
 
   public Drivetrain() {
     
@@ -84,7 +85,7 @@ public class Drivetrain extends SubsystemBase {
 
   public void arcadeDrive(double speed, double rotation) {
     // SmartDashboard.putNumber("rotation prop", rotation);
-    robotDrive.arcadeDrive(speed, rotation);
+    robotDrive.arcadeDrive(speed * speedMultiplier, rotation * speedMultiplier);
   }
 
 }
