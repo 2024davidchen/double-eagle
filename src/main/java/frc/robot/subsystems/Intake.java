@@ -33,7 +33,13 @@ public class Intake extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    setIntakeVoltage(controller.getRightTriggerAxis());
+    // setIntakeVoltage(controller.getRightTriggerAxis());
+    while (extended){
+      setIntakeVoltage(0.2);
+    }
+    if (!extended){
+      setIntakeVoltage(0);
+    }
   }
   
   public void setIntakeVoltage(double voltage){
