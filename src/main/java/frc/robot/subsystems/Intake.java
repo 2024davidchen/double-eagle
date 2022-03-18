@@ -20,6 +20,7 @@ public class Intake extends SubsystemBase {
   private final CommandXboxController controller = new CommandXboxController(0);
 
   private final DoubleSolenoid solenoid = new DoubleSolenoid(CAN.pneumaticmod, PneumaticsModuleType.REVPH, CAN.solenoidF, CAN.solenoidR);
+  private boolean extended = false;
 
   /** Creates a new Intake. */
   public Intake() {
@@ -46,8 +47,10 @@ public class Intake extends SubsystemBase {
 
   public void extend(){
     solenoid.set(Value.kForward);
+    extended = true;
   }
   public void retract(){
     solenoid.set(Value.kReverse);
+    extended = false;
   }
 }
