@@ -45,6 +45,7 @@ public class CommandXboxController extends GenericHID {
     super(port);
 
     HAL.report(tResourceType.kResourceType_XboxController, port + 1);
+    // HAL.report(tResourceType.kResourceType_Joystick, port + 1);
   }
 
   private JoystickButton build(Button button) {

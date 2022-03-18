@@ -26,8 +26,10 @@ public final class Constants {
         public static final int shooterB = 5;
 
         public static final int pneumaticmod = 3;
-        public static final int solenoidF = 1;
-        public static final int solenoidR = 7;
+        public static final int solenoidF = 7;
+        public static final int solenoidR = 0;
+
+        public static final int climberID = 0;
     }
 
     public static class XBOX {
@@ -55,4 +57,20 @@ public final class Constants {
         public static final double MAX_DEADZONE = 0.15;
         public static final double SLOW_MODE_MULTIPLIER = 0.5;
       }
+
+    public class Logitech{
+
+         // Axes
+         public static final int STICK_L_X_AXIS = 0;
+         public static final int STICK_L_Y_AXIS = 1;
+         public static final int STICK_R_X_AXIS = 4;
+         public static final int STICK_R_Y_AXIS = 5;
+         public static final int TRIGGER_L_AXIS = 2;
+         public static final int TRIGGER_R_AXIS = 3;
+
+         public static final int BUMPER_LEFT = 5;
+         public static final int BUMPER_RIGHT = 6;
+
+
+    }
 }
