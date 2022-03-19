@@ -19,8 +19,8 @@ public class Shooter extends SubsystemBase {
   private final CommandXboxController controller = new CommandXboxController(0);
   private final CANSparkMax booperMotor = new CANSparkMax(CAN.booper, MotorType.kBrushless);
   private final RelativeEncoder booperEncoder = booperMotor.getEncoder();
-  // private boolean booping = false;
-  private int TargetBoopPosition = 0;
+  private boolean booping = false;
+  private double TargetBoopPosition = 0;
 
   /** Creates a new Shooter. */
   public Shooter() {
@@ -32,24 +32,35 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    setShooterVoltage(controller.getLeftTriggerAxis());
+    setShooterVoltage(controller.getLeftTriggerAxis() * 0.7);
+    if (controller.leftBumper().get()){
+      booping = true;
+      TargetBoopPosition++;
+    }
+    
+    if (booping && booperEncoder.getPosition() < TargetBoopPosi;tion){
+      booperMotor.set(0.1)
+    }
+    else{
+      booping = false;
+      booperMotor.set(0);
+    }
     // SmartDashboard.putData(booperEncoder.getPosition());
   }
 
-  public void boop(){
-//     booperEncoder.setPosition(1);
-//     // booping = true;
-//     booperMotor.set(0.2);
-//     while (booperEncoder.getVelocity() > 0){
-// ;
-//     }
-  booperEncoder.setPosition(booperEncoder.getPosition() + booperEncoder.getCountsPerRevolution());
-  booperMotor.set(0.1);
-  }
+//   public void boop(){
+// //     booperEncoder.setPosition(1);
+// //     // booping = true;
+// //     booperMotor.set(0.2);
+// //     while (booperEncoder.getVelocity() > 0){
+// // ;
+// //     }
+//       booperMotor.set(0.1);
+//   }
 
-  public void noBoop(){
-    booperMotor.set(0);
-  }
+//   public void noBoop(){
+//     booperMotor.set(0);
+//   }
 
   public void setShooterVoltage(double percent){
     shooterF.set(percent);
