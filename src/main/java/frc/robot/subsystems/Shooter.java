@@ -19,7 +19,8 @@ public class Shooter extends SubsystemBase {
   private final CommandXboxController controller = new CommandXboxController(0);
   private final CANSparkMax booperMotor = new CANSparkMax(CAN.booper, MotorType.kBrushless);
   private final RelativeEncoder booperEncoder = booperMotor.getEncoder();
-  private boolean booping = false;
+  // private boolean booping = false;
+  private int TargetBoopPosition = 0;
 
   /** Creates a new Shooter. */
   public Shooter() {
@@ -42,7 +43,8 @@ public class Shooter extends SubsystemBase {
 //     while (booperEncoder.getVelocity() > 0){
 // ;
 //     }
-booperMotor.set(0.1);
+  booperEncoder.setPosition(booperEncoder.getPosition() + booperEncoder.getCountsPerRevolution());
+  booperMotor.set(0.1);
   }
 
   public void noBoop(){
