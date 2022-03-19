@@ -35,7 +35,7 @@ public class Intake extends SubsystemBase {
     // This method will be called once per scheduler run
     // setIntakeVoltage(controller.getRightTriggerAxis());
     while (extended){
-      setIntakeVoltage(0.2);
+      setIntakeVoltage(0.6);
     }
     if (!extended){
       setIntakeVoltage(0);

@@ -68,7 +68,7 @@ public class RobotContainer {
     controller.rightBumper().whenPressed(() -> intake.extend()).whenReleased(() -> intake.retract());
     // controller.leftBumper().whenPressed(() -> shooter.boop()).whenReleased(() -> shooter.noBoop());
     // controller.leftBumper().whenPressed(() -> shooter.boop());
-    controller.x().whenPressed(() -> climber.pullUp(0.1));
+    controller.x().whenPressed(() -> climber.pullUp(0.2));
 
     // controller.a().whenPressed(() -> intake.setIntakeVoltage());
     // controller.b().whenPressed(() -> shooter.setShooterVoltage(0.8)).whenReleased(() -> shooter.setShooterVoltage(0));

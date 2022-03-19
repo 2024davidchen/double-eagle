@@ -20,8 +20,8 @@ public final class Constants {
         public static final int driveBR = 11;
         public static final int driveBL = 8;
 
-        public static final int intake = 25;
-        public static final int booper = 7;
+        public static final int intake = 13;
+        public static final int booper = 14;
         public static final int shooterF = 36;
         public static final int shooterB = 5;
 
@@ -29,7 +29,7 @@ public final class Constants {
         public static final int solenoidF = 7;
         public static final int solenoidR = 0;
 
-        public static final int climberID = 0;
+        public static final int climberID = 6;
     }
 
     public static class XBOX {
