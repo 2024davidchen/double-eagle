@@ -38,8 +38,8 @@ public class Shooter extends SubsystemBase {
       TargetBoopPosition++;
     }
     
-    if (booping && booperEncoder.getPosition() < TargetBoopPosi;tion){
-      booperMotor.set(0.1)
+    if (booping && booperEncoder.getPosition() < TargetBoopPosition){
+      booperMotor.set(0.1);
     }
     else{
       booping = false;
