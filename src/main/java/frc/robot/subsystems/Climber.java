@@ -14,6 +14,7 @@ public class Climber extends SubsystemBase {
   public Climber() {
     
     climber.restoreFactoryDefaults();
+    climber.setInverted(true);
   }
 
   @Override
