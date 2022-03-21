@@ -46,19 +46,19 @@ public class Shooter extends SubsystemBase {
     // SmartDashboard.putData(booperEncoder.getPosition());
   }
 
-//   public void boop(){
-// //     booperEncoder.setPosition(1);
-// //     // booping = true;
-// //     booperMotor.set(0.2);
-// //     while (booperEncoder.getVelocity() > 0){
-// // ;
-// //     }
-//       booperMotor.set(0.1);
-//   }
+  public void boop(){
+//     booperEncoder.setPosition(1);
+//     // booping = true;
+//     booperMotor.set(0.2);
+//     while (booperEncoder.getVelocity() > 0){
+// ;
+//     }
+      booperMotor.set(0.1);
+  }
 
-//   public void noBoop(){
-//     booperMotor.set(0);
-//   }
+  public void noBoop(){
+    booperMotor.set(0);
+  }
 
   public void setShooterVoltage(double percent){
     shooterF.set(percent);
