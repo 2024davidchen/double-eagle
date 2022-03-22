@@ -32,29 +32,31 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    setShooterVoltage(controller.getLeftTriggerAxis() * 0.7);
-    if (controller.leftBumper().get()){
-      TargetBoopPosition++;
-    }
+    //setShooterVoltage(controller.getLeftTriggerAxis() * 0.7);
+    // if (controller.leftBumper().get()){
+    //   TargetBoopPosition++;
+    // }
     
-    if (booperEncoder.getPosition() < TargetBoopPosition){
-      booperMotor.set(0.7);
-    }
-    else{
-      booperMotor.set(0);
-    }
+    // if (booperEncoder.getPosition() < TargetBoopPosition){
+    //   booperMotor.set(0.7);
+    // }
+    // else{
+    //   booperMotor.set(0);
+    // }
     // SmartDashboard.putData(booperEncoder.getPosition());
   }
-
   public void boop(){
-//     booperEncoder.setPosition(1);
-//     // booping = true;
-//     booperMotor.set(0.2);
-//     while (booperEncoder.getVelocity() > 0){
-// ;
-//     }
-      booperMotor.set(0.1);
+    booperMotor.set(0.3);
   }
+//   public void boop(){
+// //     booperEncoder.setPosition(1);
+// //     // booping = true;
+// //     booperMotor.set(0.2);
+// //     while (booperEncoder.getVelocity() > 0){
+// // ;
+// //     }
+//       booperMotor.set(0.1);
+//   }
 
   public void noBoop(){
     booperMotor.set(0);

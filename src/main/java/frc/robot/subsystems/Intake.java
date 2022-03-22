@@ -24,8 +24,8 @@ public class Intake extends SubsystemBase {
 
   /** Creates a new Intake. */
   public Intake() {
-    solenoid.set(Value.kReverse);
-    intakeMotor.restoreFactoryDefaults();
+    // solenoid.set(Value.kReverse);
+    // intakeMotor.restoreFactoryDefaults();
     // intakeMotor.setInverted(true);
     
   }
@@ -33,13 +33,13 @@ public class Intake extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    setIntakeVoltage(controller.getRightTriggerAxis());
-    while (extended){
-      setIntakeVoltage(0.6);
-    }
-    if (!extended){
-      setIntakeVoltage(0);
-    }
+    // setIntakeVoltage(controller.getRightTriggerAxis());
+    // while (extended){
+    //   setIntakeVoltage(0.6);
+    // }
+    // if (!extended){
+    //   setIntakeVoltage(0);
+    // }
   }
   
   public void setIntakeVoltage(double voltage){

@@ -66,14 +66,18 @@ public class RobotContainer {
     // }
 
     controller.rightBumper().whenPressed(() -> intake.extend()).whenReleased(() -> intake.retract());
-    controller.leftBumper().whenPressed(() -> shooter.boop()).whenReleased(() -> shooter.noBoop());
-    controller.leftBumper().whenPressed(() -> shooter.boop());
-    controller.x().whenPressed(() -> climber.pullUp(0.2));
+    // controller.leftBumper().whenPressed(() -> shooter.boop()).whenReleased(() -> shooter.noBoop());
+    // controller.leftBumper().whenPressed(() -> shooter.boop());
+    // controller.x().whenPressed(() -> climber.pullUp(0.2));
 
-    // controller.a().whenPressed(() -> intake.setIntakeVoltage());
+    // // controller.a().whenPressed(() -> intake.setIntakeVoltage());
     controller.b().whenPressed(() -> shooter.setShooterVoltage(0.8)).whenReleased(() -> shooter.setShooterVoltage(0));
-    // intake.setIntakeVoltage(controller.getRightTriggerAxis());
+    controller.leftBumper().whenPressed(() -> shooter.boop()).whenReleased(() -> shooter.noBoop());
+    // // intake.setIntakeVoltage(controller.getRightTriggerAxis());
     // shooter.setShooterVoltage(controller.getLeftTriggerAxis());
+
+    //climber in periodic
+
   }
 
   /**
