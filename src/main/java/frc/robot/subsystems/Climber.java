@@ -20,9 +20,11 @@ public class Climber extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
- 
+    if(controller.getRightTriggerAxis()>0){
     climber.set(controller.getRightTriggerAxis() * 0.2);
-    
+  }else{
+    climber.set(-controller.getLeftTriggerAxis()*0.2);
+  }
     
   }
 

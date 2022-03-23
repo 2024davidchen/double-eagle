@@ -24,9 +24,9 @@ public class Intake extends SubsystemBase {
 
   /** Creates a new Intake. */
   public Intake() {
-    // solenoid.set(Value.kReverse);
-    // intakeMotor.restoreFactoryDefaults();
-    // intakeMotor.setInverted(true);
+    solenoid.set(Value.kReverse);
+    intakeMotor.restoreFactoryDefaults();
+    
     
   }
 
@@ -55,6 +55,16 @@ public class Intake extends SubsystemBase {
     solenoid.set(Value.kForward);
     extended = true;
   }
+  public void takeIn(){
+    extend();
+    intakeMotor.set(0.5);
+  }
+  public void finishIntake(){
+    retract();
+    intakeMotor.set(0);
+;
+  }  
+  
   public void retract(){
     solenoid.set(Value.kReverse);
     extended = false;
