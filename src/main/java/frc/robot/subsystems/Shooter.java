@@ -34,11 +34,11 @@ public class Shooter extends SubsystemBase {
     // This method will be called once per scheduler run
     setShooterVoltage(controller.getLeftTriggerAxis() * 0.7);
     if (controller.leftBumper().get()){
-      TargetBoopPosition++;
+      TargetBoopPosition += 360;
     }
     
     if (booperEncoder.getPosition() < TargetBoopPosition){
-      booperMotor.set(0.7);
+      booperMotor.set(0.3);
     }
     else{
       booperMotor.set(0);
