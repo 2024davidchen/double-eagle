@@ -62,9 +62,11 @@ public class RobotContainer {
     //these new methods have intake motor in them
     controller.rightBumper().whenPressed(() -> intake.takeIn()).whenReleased(() -> intake.finishIntake());
 
-    controller.b().whenPressed(() -> shooter.setShooter(0.5)).whenReleased(() -> shooter.setShooter(0));
+    controller.b().whenPressed(() -> shooter.setShooter(0)).whenReleased(() -> shooter.setShooter(0));
 
-    controller.leftBumper().whenPressed(() -> shooter.shoot()).whenReleased(() -> shooter.noShoot());
+    controller.leftBumper().whenPressed(() -> shooter.boop()).whenReleased(() -> shooter.noBoop());
+
+    
 
    // controller.a().whenPressed(() -> shooter.aBoop());
 

@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import java.util.function.BooleanSupplier;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -11,6 +13,9 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import frc.robot.CommandXboxController;
 import frc.robot.Constants.CAN;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
@@ -53,18 +58,20 @@ public class Shooter extends SubsystemBase {
 
   public void shoot(){
     booperMotor.set(-0.1);
-    setShooter(0.5);
+    setShooter(0.9);
   }
   public void noShoot(){
     booperMotor.set(0);
     setShooter(0);
   }
+ /*
+  public Command oneBoopCommand(){
+    double targetPos = booperEncoder.getPosition()+12;
   
-  
-public void aBoop(){
-  booperEncoder.setPosition(booperEncoder.getPosition()+1);
-}
-
+    return new RunCommand(()->boop())
+   // .withInterrupt();
+  }
+*/
   public void noBoop(){
     booperMotor.set(0);
   }
