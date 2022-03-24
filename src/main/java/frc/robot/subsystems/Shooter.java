@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import java.util.function.BooleanSupplier;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -11,6 +13,9 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import frc.robot.CommandXboxController;
 import frc.robot.Constants.CAN;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
@@ -27,40 +32,51 @@ public class Shooter extends SubsystemBase {
     shooterF.restoreFactoryDefaults();
     shooterB.restoreFactoryDefaults();
     shooterB.follow(shooterF);
+    
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    setShooterVoltage(controller.getLeftTriggerAxis() * 0.7);
-    if (controller.leftBumper().get()){
-      TargetBoopPosition += 360;
-    }
+  
+
+    // if (controller.leftBumper().get()){
+    //   TargetBoopPosition++;
+    // }
     
-    if (booperEncoder.getPosition() < TargetBoopPosition){
-      booperMotor.set(0.3);
-    }
-    else{
-      booperMotor.set(0);
-    }
-    // SmartDashboard.putData(booperEncoder.getPosition());
+    // if (booperEncoder.getPosition() < TargetBoopPosition){
+    //   booperMotor.set(0.7);
+    // }
+    // else{
+    //   booperMotor.set(0);
+    // }
+    SmartDashboard.putNumber("booperPos", booperEncoder.getPosition());
+  }
+  public void boop(){
+    booperMotor.set(-0.1);
   }
 
-//   public void boop(){
-// //     booperEncoder.setPosition(1);
-// //     // booping = true;
-// //     booperMotor.set(0.2);
-// //     while (booperEncoder.getVelocity() > 0){
-// // ;
-// //     }
-//       booperMotor.set(0.1);
-//   }
+  public void shoot(){
+    booperMotor.set(-0.1);
+    setShooter(0.9);
+  }
+  public void noShoot(){
+    booperMotor.set(0);
+    setShooter(0);
+  }
+ /*
+  public Command oneBoopCommand(){
+    double targetPos = booperEncoder.getPosition()+12;
+  
+    return new RunCommand(()->boop())
+   // .withInterrupt();
+  }
+*/
+  public void noBoop(){
+    booperMotor.set(0);
+  }
 
-//   public void noBoop(){
-//     booperMotor.set(0);
-//   }
-
-  public void setShooterVoltage(double percent){
+  public void setShooter(double percent){
     shooterF.set(percent);
   }
   

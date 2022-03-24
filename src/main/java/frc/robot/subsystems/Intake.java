@@ -26,7 +26,7 @@ public class Intake extends SubsystemBase {
   public Intake() {
     solenoid.set(Value.kReverse);
     intakeMotor.restoreFactoryDefaults();
-    // intakeMotor.setInverted(true);
+    
     
   }
 
@@ -34,12 +34,12 @@ public class Intake extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     // setIntakeVoltage(controller.getRightTriggerAxis());
-    while (extended){
-      setIntakeVoltage(0.6);
-    }
-    if (!extended){
-      setIntakeVoltage(0);
-    }
+    // while (extended){
+    //   setIntakeVoltage(0.6);
+    // }
+    // if (!extended){
+    //   setIntakeVoltage(0);
+    // }
   }
   
   public void setIntakeVoltage(double voltage){
@@ -55,6 +55,16 @@ public class Intake extends SubsystemBase {
     solenoid.set(Value.kForward);
     extended = true;
   }
+  public void takeIn(){
+    extend();
+    intakeMotor.set(0.5);
+  }
+  public void finishIntake(){
+    retract();
+    intakeMotor.set(0);
+;
+  }  
+  
   public void retract(){
     solenoid.set(Value.kReverse);
     extended = false;

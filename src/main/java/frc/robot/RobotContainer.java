@@ -56,24 +56,22 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    // controller.leftBumper().whileHeld(() -> intake.setBooperVoltage(0.5)).whenReleased(() -> intake.setBooperVoltage(0));
-    // controller.a().whileHeld(() -> intake.setIntakeVoltage(0.5)).whenReleased(() -> intake.setIntakeVoltage(0));
-    // if (controller.getRawButtonPressed(Constants.XBOX.BUMPER_LEFT)){
-    //   intake.setBooperVoltage(0.5);
-    // }
-    // else{
-    //   intake.setBooperVoltage(0);
-    // }
+   
+    // buttons currently used: both triggers, right bumper, b, left bumper
 
-    controller.rightBumper().whenPressed(() -> intake.extend()).whenReleased(() -> intake.retract());
-    // controller.leftBumper().whenPressed(() -> shooter.boop()).whenReleased(() -> shooter.noBoop());
-    // controller.leftBumper().whenPressed(() -> shooter.boop());
-    controller.x().whenPressed(() -> climber.pullUp(0.2));
+    //these new methods have intake motor in them
+    controller.rightBumper().whenPressed(() -> intake.takeIn()).whenReleased(() -> intake.finishIntake());
 
-    // controller.a().whenPressed(() -> intake.setIntakeVoltage());
-    // controller.b().whenPressed(() -> shooter.setShooterVoltage(0.8)).whenReleased(() -> shooter.setShooterVoltage(0));
-    // intake.setIntakeVoltage(controller.getRightTriggerAxis());
-    // shooter.setShooterVoltage(controller.getLeftTriggerAxis());
+    controller.b().whenPressed(() -> shooter.setShooter(0.3)).whenReleased(() -> shooter.setShooter(0));
+
+    controller.leftBumper().whenPressed(() -> shooter.boop()).whenReleased(() -> shooter.noBoop());
+
+    
+
+   // controller.a().whenPressed(() -> shooter.aBoop());
+
+    //climber in periodic
+
   }
 
   /**
