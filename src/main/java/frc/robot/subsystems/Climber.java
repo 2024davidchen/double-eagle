@@ -23,7 +23,7 @@ public class Climber extends SubsystemBase {
     if(controller.getRightTriggerAxis()>0){
     climber.set(controller.getRightTriggerAxis() * 0.2);
   }else{
-    climber.set(-controller.getLeftTriggerAxis()*0.2);
+    climber.set(-controller.getLeftTriggerAxis() * 0.2);
   }
     
   }
