@@ -64,7 +64,8 @@ public class RobotContainer {
 
     controller.b().whenPressed(() -> shooter.setShooter(0.3)).whenReleased(() -> shooter.setShooter(0));
 
-    controller.leftBumper().whenPressed(() -> shooter.boop()).whenReleased(() -> shooter.noBoop());
+    controller.leftBumper().whenPressed(() -> shooter.boop());
+    // boop is also in periodic, look at changing boopPosition
 
     
 

@@ -31,6 +31,8 @@ public class Shooter extends SubsystemBase {
   public Shooter() {
     shooterF.restoreFactoryDefaults();
     shooterB.restoreFactoryDefaults();
+    booperMotor.restoreFactoryDefaults();
+    booperEncoder.setPosition(0);
     shooterB.follow(shooterF);
     
   }
@@ -41,19 +43,21 @@ public class Shooter extends SubsystemBase {
   
 
     // if (controller.leftBumper().get()){
-    //   TargetBoopPosition++;
+    //   TargetBoopPosition -= 15;
     // }
     
-    // if (booperEncoder.getPosition() < TargetBoopPosition){
-    //   booperMotor.set(0.7);
-    // }
-    // else{
-    //   booperMotor.set(0);
-    // }
+    if (booperEncoder.getPosition() > TargetBoopPosition){
+      booperMotor.set(-0.1);
+    }
+    else{
+      booperMotor.set(0);
+    }
     SmartDashboard.putNumber("booperPos", booperEncoder.getPosition());
+    SmartDashboard.putNumber("TargetBooperPos", TargetBoopPosition);
   }
   public void boop(){
-    booperMotor.set(-0.1);
+    // booperMotor.set(-0.1);
+    TargetBoopPosition -= 10.5;
   }
 
   public void shoot(){
